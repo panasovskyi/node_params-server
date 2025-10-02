@@ -8,7 +8,7 @@ function createServer() {
     const relativePath = new URL(req.url, 'http://localhost').pathname.slice(1);
     const params = new URL(req.url, 'http://localhost');
     const query = Object.fromEntries(params.searchParams);
-    const parts = relativePath.split('/');
+    const parts = relativePath.split('/').filter(Boolean);
 
     const response = {
       parts,
