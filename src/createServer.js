@@ -5,9 +5,9 @@ const http = require('http');
 
 function createServer() {
   const server = http.createServer((req, res) => {
-    const relativePath = new URL(req.url, 'http://localhost').pathname.slice(1);
-    const params = new URL(req.url, 'http://localhost');
-    const query = Object.fromEntries(params.searchParams);
+    const url = new URL(req.url, 'http://localhost');
+    const relativePath = url.pathname;
+    const query = Object.fromEntries(url.searchParams);
     const parts = relativePath.split('/').filter(Boolean);
 
     const response = {
